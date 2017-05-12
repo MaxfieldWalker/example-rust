@@ -1,8 +1,6 @@
-const EYES: &'static str = ":";
+pub mod smile;
 
-pub fn smile() -> String {
-    format!("{}{}", EYES, ")")
-}
+const EYES: &'static str = ":";
 
 pub fn frown() -> String {
     format!("{}{}", EYES, "(")
@@ -21,16 +19,11 @@ pub fn angry() -> String {
 /// assert_eq!(which(&frown()), "Frown");
 /// ```
 pub fn which(face: &str) -> &'static str {
-    if face == smile() {
-        "Smile"
-    }
-    else if face == frown() {
+    if face == frown() {
         "Frown"
-    }
-    else if face == angry() {
+    } else if face == angry() {
         "Angry"
-    }
-    else {
+    } else {
         "I don't know"
     }
 }
@@ -38,11 +31,6 @@ pub fn which(face: &str) -> &'static str {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn can_smile() {
-        assert_eq!(smile(), ":)");
-    }
 
     #[test]
     fn can_frown() {
@@ -53,10 +41,4 @@ mod tests {
     fn can_angry() {
         assert_eq!(angry(), ">:(");
     }
-
-    #[test]
-    fn string_representation() {
-        assert_eq!(which(&smile()), "Smile");
-    }
 }
-
